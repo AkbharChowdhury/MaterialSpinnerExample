@@ -39,9 +39,7 @@ public class MainActivity extends AppCompatActivity {
         AutoCompleteTextView autoCompleteMeals = binding.autoCompleteMeals;
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.dropdown_item, data);
         autoCompleteMeals.setAdapter(adapter);
-//        setDropDownIndex(autoCompleteMeals, 0);
-        autoCompleteMeals.setText(
-                autoCompleteMeals.getAdapter().getItem(0).toString(), false);
+        setDropDownIndex(autoCompleteMeals, 0);
         autoCompleteMeals.setOnItemClickListener((parent, view, position, id) -> {
             String selectedMeal = parent.getAdapter().getItem(position).toString();
             Toast.makeText(this, selectedMeal, Toast.LENGTH_SHORT).show();

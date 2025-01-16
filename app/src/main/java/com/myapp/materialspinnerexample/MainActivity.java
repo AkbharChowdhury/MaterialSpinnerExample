@@ -39,13 +39,18 @@ public class MainActivity extends AppCompatActivity {
         AutoCompleteTextView autoCompleteMeals = binding.autoCompleteMeals;
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.dropdown_item, data);
         autoCompleteMeals.setAdapter(adapter);
-        autoCompleteMeals.setText(adapter.getItem(0), false);
-
+//        setDropDownIndex(autoCompleteMeals, 0);
+        autoCompleteMeals.setText(
+                autoCompleteMeals.getAdapter().getItem(0).toString(), false);
         autoCompleteMeals.setOnItemClickListener((parent, view, position, id) -> {
             String selectedMeal = parent.getAdapter().getItem(position).toString();
             Toast.makeText(this, selectedMeal, Toast.LENGTH_SHORT).show();
-            autoCompleteMeals.setText(adapter.getItem(position), false);
-
+            setDropDownIndex(autoCompleteMeals, position);
         });
+    }
+
+    private void setDropDownIndex(AutoCompleteTextView autoCompleteTextView, int index) {
+        autoCompleteTextView.setText(
+                autoCompleteTextView.getAdapter().getItem(index).toString(), false);
     }
 }

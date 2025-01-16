@@ -32,8 +32,12 @@ public class MainActivity2 extends AppCompatActivity {
         });
 
 
-        List<String> data = Arrays.stream(getResources().getStringArray(R.array.tags_array)).sorted().collect(Collectors.toList());
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.dropdown_item, data);
+        List<String> meals = Arrays.stream(getResources().getStringArray(R.array.tags_array)).sorted().collect(Collectors.toList());
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.dropdown_item_meals, meals);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.dropdown_item_meals, meals);
+//        arrayAdapter.setDropDownViewResource(R.layout.spinner_inner_text);
+
         AutoCompleteTextView autoCompleteTextViewMeal = binding.autoCompleteTextViewMeal;
 
         autoCompleteTextViewMeal.setAdapter(arrayAdapter);
